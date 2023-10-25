@@ -1,22 +1,22 @@
-from prueba1 import suma
+from tests.prueba1 import numeroMayor
 import pytest
 
-def test_suma():
-    assert suma(1, 1) == 2
-    assert suma(0, 0) == 0
-    assert suma(100, -100) == 0
+def test_numeroMayor():
+    assert numeroMayor(1, 1) == 0
+    assert numeroMayor(45, 3) == 45
+    assert numeroMayor(20, -50) == 20
+    assert numeroMayor(20, 100) == 100
 
 
 @pytest.mark.parametrize(
     "input_n1, input_n2, expected",
     [
-        (1, 1, 2),
+        (1, 1, 0),
         (0, 0, 0),
-        (100, -100, 0),
-        (-15, -1, -16),
-        (-3, 8, 5),
-        (9, suma(-1, -2), 6)
+        (100, -100, 100),
+        (-15, -1, -1),
+        (-3, 8, 8),
     ]
   )
-def test_suma_params(input_n1, input_n2, expected):
-    assert suma(input_n1, input_n2) == expected
+def test_numero_mayor(input_n1, input_n2, expected):
+    assert numeroMayor(input_n1, input_n2) == expected
